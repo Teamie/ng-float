@@ -20,7 +20,7 @@
     "angular": "^1.7.9",
     "jquery": "^3.5.0",
     "jquery-ui": "^1.12.1",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
