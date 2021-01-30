@@ -34,24 +34,8 @@ export function flItem() {
       }
 
       $onInit() {
-        if(typeof this.layout.left === "string" && this.layout.left.includes('px')) {
-          this.layout.left = this.$scope.flContainer.mapper._closestMultiple(parseInt(this.layout.left), this.$scope.flContainer.mapper.colWidth);
-        }
-
-        if(typeof this.layout.top === "string" && this.layout.top.includes('px')) {
-          this.layout.top = this.$scope.flContainer.mapper._closestMultiple(parseInt(this.layout.top), this.$scope.flContainer.mapper.rowHeight);
-        }
-
-
-        if(typeof this.layout.height === "string" && this.layout.height.includes('px')) {
-          this.layout.height = this.$scope.flContainer.mapper._closestMultiple(parseInt(this.layout.height), this.$scope.flContainer.mapper.rowHeight);
-        }
-
-        if(typeof this.layout.width === "string" && this.layout.width.includes('px')) {
-          this.layout.width = this.$scope.flContainer.mapper._closestMultiple(parseInt(this.layout.width), this.$scope.flContainer.mapper.colWidth);
-        }
-
-        this.item = new Item(this.layout.left, this.layout.top, this.layout.width, this.layout.height);
+        var dimensions = this.$scope.flContainer.mapper.px2dimension(this.layout);
+        this.item = new Item(dimensions.left, dimensions.top, dimensions.width, dimensions.height);
       }
 
       render(css, updatedLayout) {
