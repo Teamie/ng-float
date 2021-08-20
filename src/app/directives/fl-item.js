@@ -49,13 +49,13 @@ export function flItem() {
       scope.flContainer = flContainer;
       flContainer.initItem(flItem);
       element.addClass('fl-item');
+      
+      scope.$on('$destroy', () => {
+        flContainer.onItemRemove(flItem);
+      });
 
       if (flContainer.isEditable) {
         element.addClass('fl-edit');
-
-        scope.$on('$destroy', () => {
-          flContainer.onItemRemove(flItem);
-        });
 
         if (flItem.isEditable) {
           makeDraggable();
